@@ -41,3 +41,19 @@ def excluir (request, id):
         usuario = get_object_or_404(Usuario, id_usuario=id)
         usuario.delete()
         return redirect('listagem_usuarios')
+def editar(request, id):
+     usuario = get_object_or_404(Usuario, id_usuario=id)
+     if request.method == 'POST':
+        nome = request.POST.get('nome')
+        idade = request.POST.get('idade')
+     if not nome or not idade:
+        pass
+     else:
+        usuario.nome = nome
+        usuario.idade = idade
+        usuario.save()
+        messages.success(request, "Usuário atualizado com sucesso!")
+        return redirect('listagem_usuarios')
+     
+     return render(request, 'usuarios/editar.html', {'usuario': usuario})
+
