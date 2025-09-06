@@ -21,7 +21,7 @@
                 <td>{{usuario.nome}}</td>
                 <td>{{usuario.idade}}</td>
                 <td>
-                    <form action="{% url 'excluir_usuario' usuario.id_usuario %}" method="post" style="display:inline;">
+                    <form action="{% url 'editar_usuario' usuario.id_usuario %}" method="post" style="display:inline;">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-primary btn-sm">Editar</button> 
                     </form>
